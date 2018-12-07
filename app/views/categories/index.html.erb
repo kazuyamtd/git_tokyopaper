@@ -1,15 +1,15 @@
 <div class="container">
   <div class="leftbar">
-    <a href="#"><h1>rubyslist</h1></a>
+    <a href="#"><h1>東京</h1></a>
     <ul>
-      <a href="#">post to classifieds</a>
-      <li>my account</li>
+      <%= link_to '投稿しよう（無料）', new_listing_path %>
+      <li>アカウント</li>
     </ul>
     <form>
-      <p>search rubyslist</p>
-      <input type="text" name="firstname" placeholder="search" size="20">
+      <p>検索</p>
+      <input type="text" name="firstname" placeholder="検索" size="20">
       <br>
-      <input type="text" name="firstname" placeholder="where" size="20">
+      <input type="text" name="firstname" placeholder="場所" size="20">
       <br>
       <select>
         <option value="volvo">Volvo</option>
@@ -25,63 +25,43 @@
     <div class="center-one">
       <table>
         <tr>
-          <th class="table-header">community</th>
+          <th class="table-header"><%= link_to 'コミュニティ', category_path(@community) %></th>
         </tr>
         <tr>
           <td>
-            <ul class="left-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-            <ul class="right-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th class="table-header">personals</th>
-        </tr>
-        <tr>
-          <td>
+            <% @community.subcategories.each do |subcategory| %>
             <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+              <li><%= link_to subcategory.name, category_subcategory_path(@community, subcategory) %></li>
             </ul>
+            <% end %>
           </td>
         </tr>
       </table>
       <table>
         <tr>
-          <th class="table-header">services</th>
+          <th class="table-header"><%= link_to 'イベント', category_path(@event) %></th>
         </tr>
         <tr>
           <td>
-            <ul class="left-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+             <% @event.subcategories.each do |subcategory| %>
+            <ul>
+              <li><%= link_to subcategory.name, category_subcategory_path(@event, subcategory) %></li>
             </ul>
-            <ul class="right-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th class="table-header"><%= link_to 'サービス', category_path(@service) %></th>
+        </tr>
+        <tr>
+          <td>
+             <% @service.subcategories.each do |subcategory| %>
+            <ul>
+              <li><%= link_to subcategory.name, category_subcategory_path(@service, subcategory) %></li>
             </ul>
+            <% end %>
           </td>
         </tr>
       </table>
@@ -89,59 +69,29 @@
     <div class="center-two">
       <table>
         <tr>
-          <th class="table-header">housing</th>
+          <th class="table-header"><%= link_to '不動産', category_path(@housing) %></th>
         </tr>
         <tr>
           <td>
+             <% @housing.subcategories.each do |subcategory| %>
             <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+              <li><%= link_to subcategory.name, category_subcategory_path(@housing, subcategory) %></li>
             </ul>
+            <% end %>
           </td>
         </tr>
       </table>
       <table>
         <tr>
-          <th class="table-header">for sale</th>
+          <th class="table-header"><%= link_to '販売', category_path(@sale) %></th>
         </tr>
         <tr>
           <td>
-            <ul class="left-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+             <% @sale.subcategories.each do |subcategory| %>
+            <ul>
+              <li><%= link_to subcategory.name, category_subcategory_path(@sale, subcategory) %></li>
             </ul>
-            <ul class="right-list">
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
+            <% end %>
           </td>
         </tr>
       </table>
@@ -149,37 +99,15 @@
     <div class="center-three">
       <table>
         <tr>
-          <th class="table-header">jobs</th>
+          <th class="table-header"><%= link_to '求人', category_path(@job) %></th>
         </tr>
         <tr>
           <td>
+             <% @job.subcategories.each do |subcategory| %>
             <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
+              <li><%= link_to subcategory.name, category_subcategory_path(@job, subcategory) %></li>
             </ul>
+            <% end %>
           </td>
         </tr>
       </table>
@@ -187,7 +115,7 @@
   </div>
   <div class="rightbar">
     <ul class="rightbar-top">
-      <li><%= link_to 'help and faq', help_path %></li>
+      <li><%= link_to 'ヘルプ', help_path %></li>
       <li><%= link_to 'avoid scams & fraud', scams_path %></li>
       <li>personal safety tips</li>
       <li class="rightbar-top">terms of use</li>
