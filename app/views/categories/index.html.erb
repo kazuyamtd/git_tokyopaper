@@ -7,18 +7,12 @@
     </ul>
     <form>
       <p>検索</p>
-      <input type="text" name="firstname" placeholder="検索" size="20">
-      <br>
-      <input type="text" name="firstname" placeholder="場所" size="20">
-      <br>
-      <select>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-      <button type="button">>
-      </button>
+      <%= form_tag search_listings_path, method: :get do |f| %>
+      <%= text_field_tag :search, nil, placeholder: 'search' %>
+      <%= text_field_tag :locatioon, nil, placeholder: 'near' %>
+      <%= select_tag :category, options_for_select(Category.all.map{|c|[c.name, c.id]}) %>
+      <%= submit_tag '>' %>
+      <% end %>
     </form>
   </div>
   <div class="center-column" >
