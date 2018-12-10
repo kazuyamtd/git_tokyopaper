@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   match '/help', to: 'pages#help', via: :get
   match '/scams', to: 'pages#scams', via: :get
   
+  match 'subcategories/find_by_category', to: 'subcategories#find_by_category', via: :post
+  
 end

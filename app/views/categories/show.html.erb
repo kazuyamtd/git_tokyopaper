@@ -1,7 +1,7 @@
 <div class="topbar">
   <div class="container">
     <div class="vertical-center">
-      rubyslist > jobs > accounting
+      <%= link_to '東京', root_path %> > jobs > accounting
     </div>
   </div>
 </div>
@@ -11,11 +11,15 @@
      <div class="oldest">oldest</div>
      <div class="highest-price">highest-price</div>
      <div class="lowest-price">lowest-price</div>
-   </div>
+  </div>
   <ul class="list-margin">
-    <li><span>November 14</span> Listing here! (MN)</li>
-    <li><span>November 14</span> Listing here! (MN)</li>
-    <li><span>November 14</span> Listing here! (MN)</li>
-    <li><span>November 14</span> Listing here! (MN)</li>
+    <% @listings.each do |listing| %>
+     <li>
+       <span>
+         <%= listing.created_at.strftime('%b %d, %Y') %>
+       </span> 
+         <%= link_to listing.title, listing %> - (<%= listing.city %>, <%= listing.state %>)
+     </li>
+    <% end %>
   </ul>
 </div>
