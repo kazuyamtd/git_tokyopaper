@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  console.log("aaaaaaaaa");
   var getSubcategories = function(category_id){
     var $subcategories = $('#listing_subcategory_id');
     $($subcategories).empty();

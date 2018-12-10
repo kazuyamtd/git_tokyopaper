@@ -21,7 +21,7 @@
   </p>
   <p>
     <%= f.label :サブ %>
-    <%= f.select :subcategory_id, options_for_select([]) %>
+    <%= f.select :subcategory_id, Subcategory.all.map{ |f|[f.name, f.id]}  %>
   </p>
     <%= f.label :都道府県 %>
     <%= f.text_field :state %>
@@ -30,4 +30,5 @@
     <%= f.submit class: "create-button" %>
     <% end %>
   </div>
+  
 </div>
