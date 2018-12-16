@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   resources :categories do
       resources :subcategories
   end
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   
   match '/help', to: 'pages#help', via: :get
   match '/scams', to: 'pages#scams', via: :get
-  
+  match '/mylistings', to: 'listings#mylistings', via: :get
   match 'subcategories/find_by_category', to: 'subcategories#find_by_category', via: :post
   
 end

@@ -2,8 +2,15 @@
   <div class="leftbar">
     <a href="#"><h1>東京</h1></a>
     <ul>
-      <%= link_to '投稿しよう（無料）', new_listing_path %>
-      <li>アカウント</li>
+      <li><%= link_to '投稿しよう（無料）', new_listing_path %></li>
+        <% if user_signed_in? %>
+        <li><%= link_to 'マイアカウント', edit_user_registration_path %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to 'マイリスト', mylistings_path %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+      <% end %>
     </ul>
     <form>
       <p>検索</p>
