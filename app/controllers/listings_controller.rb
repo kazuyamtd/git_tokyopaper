@@ -15,6 +15,22 @@ class ListingsController < ApplicationController
         redirect_to root_path
     end
     
+    def edit
+        @listing = Listing.find(params[:id])
+    end
+    
+    def update
+        @listing = Listing.find(params[:id])
+        @listing = Listing.update(listing_params)
+        redirect_to root_path
+    end
+    
+    def destroy
+        @listing = Listing.find(params[:id])
+        @listing = Listing.destroy
+        redirect_to root_path
+    end
+    
     def search
         @listings = Listing.search(params)
     end
